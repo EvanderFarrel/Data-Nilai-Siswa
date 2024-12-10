@@ -1,0 +1,67 @@
+internal class Program
+{
+    static int[,] itemnilai = new int [3,2];
+
+    static void inputnilai()
+    {
+     Console.WriteLine("Masukkan nilai ujian matematika untuk 3 kelas (2 orang per kelas)");
+     for(int i = 0;i < 3;i++)
+     {
+      Console.WriteLine($"Kelas {i+1}");
+      for(int j = 0;j < 2;j++)
+      {
+       Console.Write($"Masukkan nilai siswa ke {j+1} : ");
+       int nilai = Convert.ToInt32(Console.ReadLine());
+       itemnilai[i,j] = nilai;
+      }
+     }
+     Console.WriteLine("=== INPUT NILAI SUDAH SELESAI ===");
+    }
+
+    static void tampilkannilai()
+    {
+     Console.WriteLine("=== DATA NLAI UJIAN MATEMATIKA ===");
+     for(int i = 0;i < 3;i++)
+     {
+      int total = 0;
+      Console.WriteLine($"Kelas {i+1}: ");
+      for(int j = 0;j < 2;j++)
+      {
+       Console.Write($"{itemnilai[i,j]} ");
+       total += itemnilai[i,j];
+      }
+      Console.WriteLine($"| Total Nilai : {total}");
+     }
+     Console.WriteLine("=== TAMPILKAN NILAI SUDAH SELESAI ===");
+    }
+    private static void Main(string[] args)
+    {
+        while (true)
+        {
+        Console.WriteLine("=== MENU ANALISIS NILAI UJIAN MATEMATIKA ===");
+        Console.WriteLine("1. INPUT NILAI ");
+        Console.WriteLine("2. TAMPILKAN NILAI ");
+        Console.WriteLine("3. KELUAR");
+        Console.Write("Masukkan Pilihan (1/2/3) : ");
+        int pilihan = Convert.ToInt32(Console.ReadLine());
+        switch(pilihan)
+        {
+            case 1:
+            inputnilai();
+            continue;
+
+            case 2:
+            tampilkannilai();
+            break;
+
+            case 3:
+            Console.WriteLine("Terimakasih sudah menggunakan program ini");
+            return;
+
+            default:
+            Console.WriteLine("=== MAAF, PILIHAN TIDAK ADA ===");
+            break;
+        }
+        }
+    }
+}
